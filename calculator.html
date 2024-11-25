@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="members.html">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="calculator">
+        <h1>Calculator for Permutation, Combination, and Probability</h1>
+        
+        <div class="form">
+            <label for="n">Enter n:</label>
+            <input type="number" id="n" placeholder="Enter n">
+            <label for="r">Enter r:</label>
+            <input type="number" id="r" placeholder="Enter r">
+        </div>
+
+        <div class="buttons">
+            <button onclick="calculatePermutation()">Calculate Permutation</button>
+            <button onclick="calculateCombination()">Calculate Combination</button>
+            <button onclick="calculateProbability()">Calculate Probability</button>
+            <button onclick="clearResults()">Clear</button> <!-- Clear Button -->
+        </div>
+
+        <div class="result">
+            <p id="result"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Probability, Permutation, and Combination</p>
+    </footer>
+
+    <!-- JavaScript directly included -->
+    <script>
+        function factorial(n) {
+            let result = 1;
+            for (let i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        function calculatePermutation() {
+            let n = parseInt(document.getElementById("n").value);
+            let r = parseInt(document.getElementById("r").value);
+
+            if (n >= r) {
+                let result = factorial(n) / factorial(n - r);
+                document.getElementById("result").innerText = "Permutation (P) = " + result;
+            } else {
+                document.getElementById("result").innerText = "Invalid input: n must be greater than or equal to r.";
+            }
+        }
+
+        function calculateCombination() {
+            let n = parseInt(document.getElementById("n").value);
+            let r = parseInt(document.getElementById("r").value);
+
+            if (n >= r) {
+                let result = factorial(n) / (factorial(r) * factorial(n - r));
+                document.getElementById("result").innerText = "Combination (C) = " + result;
+            } else {
+                document.getElementById("result").innerText = "Invalid input: n must be greater than or equal to r.";
+            }
+        }
+
+        function calculateProbability() {
+            let n = parseInt(document.getElementById("n").value);
+            let r = parseInt(document.getElementById("r").value);
+
+            if (n >= r) {
+                let result = r / n;
+                document.getElementById("result").innerText = "Probability = " + result;
+            } else {
+                document.getElementById("result").innerText = "Invalid input: n must be greater than or equal to r.";
+            }
+        }
+
+        // Function to clear results and reset inputs
+        function clearResults() {
+            document.getElementById("n").value = '';
+            document.getElementById("r").value = '';
+            document.getElementById("result").innerText = '';
+        }
+    </script>
+</body>
+</html>
